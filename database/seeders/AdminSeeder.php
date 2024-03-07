@@ -23,7 +23,7 @@ class AdminSeeder extends Seeder
         
         $user->assignRole('Admin');
         Admin::create([
-            'Admin_id' => $user->id,
+            'user_id' => $user->id,
             
         ]);
     }

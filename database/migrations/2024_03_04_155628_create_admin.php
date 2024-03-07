@@ -18,6 +18,7 @@ return new class extends Migration
             ->references('id')
             ->on('users')
             ->where('role', 'admin');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

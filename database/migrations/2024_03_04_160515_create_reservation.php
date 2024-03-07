@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('client_id');
             $table->integer('number_of_people');
             $table->boolean('status')->default(1);
+            $table->softDeletes();
             $table->timestamps();
 
             

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,15 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/adminDashboard',[AdminController::class,'index'])->name('admin.dashboard');
+});
+// Route::middleware(['auth', 'role:Organizer'])->group(function () {
+//     Route::get('/organizerDashboard', [OrganizerController::class, 'index'])->name('driver.dashboard');
+// });
+// Route::middleware(['auth', 'role:Client'])->group(function () {
+//     Route::get('/clientDashboard', [ClientController::class, 'index'])->name('passenger.dashboard');
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

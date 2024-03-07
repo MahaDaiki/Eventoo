@@ -19,11 +19,13 @@ return new class extends Migration
             $table->string('location'); 
             $table->time('duration'); 
             $table->integer('disponible_places');
-            $table->boolean('is_valid');
+            $table->boolean('is_valid')->default(0);
+            $table->boolean('is_automatic')->default(0);
             $table->unsignedBigInteger('organizer_id');
             $table->unsignedBigInteger('category_id');  
             $table->foreign('organizer_id')->references('id')->on('organizers');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->softDeletes();
             $table->timestamps();
             
         });
