@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Evento</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,8 +26,10 @@
     <link href="{{ asset('vendors/prism/prism.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/css/theme.css')}}" rel="stylesheet" />
     <link href="{{ asset('assets/css/user.css')}}" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yV9pL/CSBFmssvE7BoHp1uSKnH4LbIbDkPjFq0Rzy3Qv50l5a1BJsbAcaZlS9fI" crossorigin="anonymous">
     <link href="{{ asset('vendors/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6gD0NX6PTbhEJ6QF/WokGBR5dFZ1xM2" crossorigin="anonymous">
+
         
 
         <!-- Styles -->
@@ -49,21 +51,32 @@
                 </div>
             @endif --}}
             <main>
-                <section class="py-3" style="background-color:#10203F;">
-                  <div class="container" id="topNav">
-                    <div class="row justify-content-between">
-                      <div class="col-auto"><a class="navbar-brand" href="index.html">EvenTo</a></div>
-                      @if (Route::has('login'))
-                      @auth
-                      <div class="col-auto order-2 d-none d-sm-block"><a class="nav-link" href="{{ url('/dashboard') }}"> <i class="fas fa-user text-info me-2"></i></a></div>
-                      @else
-                      <div class="col-auto order-2 d-none d-sm-block"><a class="nav-link" href="{{ route('login') }}"> Login</a></div>
-                      @if (Route::has('register'))
-                      <div class="col-auto order-2 d-none d-sm-block"><a class="nav-link" href="{{ route('register') }}"> Register</a></div>
-                      @endif
-                      @endauth
-                  </div>
-              @endif
+                <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#10203F;">
+                    <div class="container">
+                        <a class="navbar-brand" href="index.html">EvenTo</a>
+                        
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                @if (Route::has('login'))
+                                    @auth
+                                        <li class="nav-item d-none d-sm-block"><a class="nav-link" href="{{ url('/dashboard') }}"><i class="fas fa-user text-info me-2"></i></a></li>
+                                    @else
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                                        @if (Route::has('register'))
+                                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                                        @endif
+                                    @endauth
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                
+                
                       {{-- <div class="col-auto d-none d-lg-block">
                         <div class="d-flex align-items-center"> --}}
                           {{-- <p class="mb-0 me-3 text-primary text-end fw-bolder lh-1 opacity-50">SEARCH <br />ANYTHING</p> --}}
@@ -78,7 +91,7 @@
                   </div>
                 </section>
                 
-                <div class="py-7 py-sm-8 py-lg-10 py-xxl-9 py-xxl-11" style="background-color:#10203F;"></div>
+                {{-- <div class="py-7 py-sm-8 py-lg-10 py-xxl-9 py-xxl-11" style="background-color:#10203F;"></div>
                 <section class="mb-n9 mb-lg-n11 p-0" style="transform: translateY(calc(-50% - 25px));">
                   <div class="container-fluid">
                     <div class="position-relative hero-carousel-container" id="heroCarouselContainer">
@@ -141,7 +154,7 @@
                     </div>
                   </div>
                 </section>
-          
+           --}}
           
                 <!-- ============================================-->
                 <!-- <section> begin ============================-->
@@ -582,7 +595,14 @@
     <script src="{{ asset('vendors/lodash/lodash.min.js')}}"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="{{ asset('assets/js/theme.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eQfT0Y9qNQeGdZl5CK5I2ihK6J/RJPypXtkFEl7MOh5deV+bbef5dBo4y5yoSZNf" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js" integrity="sha384-Lz9ATw5Lv+I3r1BXMoOyC63fo2y9KABhMZi1aAFfkX7fFpLGiM3D0JMuXZ+UnF7E" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6gD0NX6PTbhEJ6QF/WokGBR5dFZ1xM2" crossorigin="anonymous"></script>
+
+    
+
     </body>
 </html>

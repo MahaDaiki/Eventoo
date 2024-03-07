@@ -1,0 +1,5 @@
+spatie media 
+
+composer require spatie/laravel-medialibrary
+
+php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider"

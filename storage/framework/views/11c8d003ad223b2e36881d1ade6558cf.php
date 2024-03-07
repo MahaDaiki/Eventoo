@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Evento</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,8 +26,10 @@
     <link href="<?php echo e(asset('vendors/prism/prism.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/css/theme.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(asset('assets/css/user.css')); ?>" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yV9pL/CSBFmssvE7BoHp1uSKnH4LbIbDkPjFq0Rzy3Qv50l5a1BJsbAcaZlS9fI" crossorigin="anonymous">
     <link href="<?php echo e(asset('vendors/swiper/swiper-bundle.min.css')); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6gD0NX6PTbhEJ6QF/WokGBR5dFZ1xM2" crossorigin="anonymous">
+
         
 
         <!-- Styles -->
@@ -37,21 +39,32 @@
         
             
             <main>
-                <section class="py-3" style="background-color:#10203F;">
-                  <div class="container" id="topNav">
-                    <div class="row justify-content-between">
-                      <div class="col-auto"><a class="navbar-brand" href="index.html">EvenTo</a></div>
-                      <?php if(Route::has('login')): ?>
-                      <?php if(auth()->guard()->check()): ?>
-                      <div class="col-auto order-2 d-none d-sm-block"><a class="nav-link" href="<?php echo e(url('/dashboard')); ?>"> <i class="fas fa-user text-info me-2"></i></a></div>
-                      <?php else: ?>
-                      <div class="col-auto order-2 d-none d-sm-block"><a class="nav-link" href="<?php echo e(route('login')); ?>"> Login</a></div>
-                      <?php if(Route::has('register')): ?>
-                      <div class="col-auto order-2 d-none d-sm-block"><a class="nav-link" href="<?php echo e(route('register')); ?>"> Register</a></div>
-                      <?php endif; ?>
-                      <?php endif; ?>
-                  </div>
-              <?php endif; ?>
+                <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#10203F;">
+                    <div class="container">
+                        <a class="navbar-brand" href="index.html">EvenTo</a>
+                        
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <?php if(Route::has('login')): ?>
+                                    <?php if(auth()->guard()->check()): ?>
+                                        <li class="nav-item d-none d-sm-block"><a class="nav-link" href="<?php echo e(url('/dashboard')); ?>"><i class="fas fa-user text-info me-2"></i></a></li>
+                                    <?php else: ?>
+                                        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('login')); ?>">Login</a></li>
+                                        <?php if(Route::has('register')): ?>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo e(route('register')); ?>">Register</a></li>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                
+                
                       
                           
                           
@@ -60,70 +73,7 @@
                   </div>
                 </section>
                 
-                <div class="py-7 py-sm-8 py-lg-10 py-xxl-9 py-xxl-11" style="background-color:#10203F;"></div>
-                <section class="mb-n9 mb-lg-n11 p-0" style="transform: translateY(calc(-50% - 25px));">
-                  <div class="container-fluid">
-                    <div class="position-relative hero-carousel-container" id="heroCarouselContainer">
-                      <div class="position-absolute translate-middle d-none d-xxl-block"><img src="<?php echo e(asset('assets/img/illustrations/bg-circle.png')); ?>" alt="" /></div>
-                      <div class="position-absolute top-0 d-none d-lg-block" style="right: -16px;">
-                        <div class="bg-carousel-soft-primary position-relative" id="heroSlidercounterContainer">
-                          <div class="hero-slider-counter" id="heroSlidercounter"> 01 </div>
-                        </div>
-                      </div>
-                      <div class="carousel slide" id="hero-carousel" data-bs-ride="carousel">
-                        <div class="slider-rectangle z-index-2 d-none d-xxl-block"><img src="assets/img/gallery/rectangle-s.png" alt="" /></div>
-                        <div class="position-relative">
-                          <div class="hero-social-icons d-none d-lg-block">
-                            <ul class="list-unstyled list-inline">
-                              <li class="list-inline-item mr-2"><a class="text-decoration-none" href="#!"><img class="list-social-icon" src="assets/img/icons/instagram.png" width="30" alt="..." /></a></li>
-                              <li class="list-inline-item mr-2"><a class="text-decoration-none" href="#!"><img class="list-social-icon" src="assets/img/icons/facebook.png" width="30" alt="..." /></a></li>
-                              <li class="list-inline-item mr-2"><a class="text-decoration-none" href="#!"><img class="list-social-icon" src="assets/img/icons/twitter.png" width="30" alt="..." /></a></li>
-                            </ul>
-                          </div>
-                          <div class="carousel-inner" id="heroCarouselInner">
-                            <div class="carousel-item active"><img class="d-block w-100" src="assets/img/gallery/header-slider-1.png" height="447" alt="..." />
-                              <div class="carousel-caption d-none d-sm-block">
-                                <h1 class="display-4 text-light text-start fw-light fs-2 fs-md-3 fs-lg-4 fs-xl-5">We <strong>empower </strong>you <br />to learn what you love.</h1>
-                              </div>
-                            </div>
-                            <div class="carousel-item"><img class="d-block w-100" src="assets/img/gallery/header-slider-2.png" height="447" alt="..." />
-                              <div class="carousel-caption d-none d-sm-block">
-                                <h1 class="display-4 text-light text-start fw-light"> <strong>An extensive Archieve for you to </strong><br class="d-none d-xxl-block" />explore the many areas of knowledge.</h1>
-                              </div>
-                            </div>
-                            <div class="carousel-item"><img class="d-block w-100" src="assets/img/gallery/header-slider-3.png" height="447" alt="..." />
-                              <div class="carousel-caption d-none d-sm-block">
-                                <h1 class="display-4 text-light text-start fw-light"> Learn how to<strong> express yourself </strong><br />artistically via engaging courses.</h1>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row g-0">
-                          <div class="col-3 position-relative">
-                            <div class="carousel-indicators justify-content-start custom-indicators">
-                              <button class="active" type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                              <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                              <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"> </button>
-                            </div>
-                          </div>
-                          <div class="col-9 position-relative">
-                            <div class="card" style="background-color:#2257BF;">
-                              <div class="card-body border-bottom border-primary p-2 px-md-4 py-md-3 py-xl-4 p-sm-3">
-                                <div class="d-md-flex flex-between-center">
-                                  <p class="mb-0 text-primary fs-2"><strong>250,998 </strong>people are learning with us</p><a class="text-decoration-none text-light fw-bold" href="#!" role="button">LEARN MORE
-                                    <svg class="bi bi-arrow-right text-primary ms-2" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-                                      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                                    </svg></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-          
+                
           
                 <!-- ============================================-->
                 <!-- <section> begin ============================-->
@@ -564,8 +514,15 @@
     <script src="<?php echo e(asset('vendors/lodash/lodash.min.js')); ?>"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="<?php echo e(asset('assets/js/theme.js')); ?>"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eQfT0Y9qNQeGdZl5CK5I2ihK6J/RJPypXtkFEl7MOh5deV+bbef5dBo4y5yoSZNf" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js" integrity="sha384-Lz9ATw5Lv+I3r1BXMoOyC63fo2y9KABhMZi1aAFfkX7fFpLGiM3D0JMuXZ+UnF7E" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6gD0NX6PTbhEJ6QF/WokGBR5dFZ1xM2" crossorigin="anonymous"></script>
+
+    
+
     </body>
 </html>
 <?php /**PATH C:\Users\AMD\Evento\resources\views/welcome.blade.php ENDPATH**/ ?>
