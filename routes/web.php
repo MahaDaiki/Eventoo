@@ -3,8 +3,12 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -31,11 +35,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/adminDashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::resource('categories', CategoriesController::class);
 });
-// Route::middleware(['auth', 'role:Organizer'])->group(function () {
-//     Route::get('/organizerDashboard', [OrganizerController::class, 'index'])->name('driver.dashboard');
-// });
+Route::middleware(['auth', 'role:Organizer'])->group(function () {
+    Route::get('/organizerDashboard', [OrganizerController::class, 'index'])->name('organizer.dashboard');
+    //Event Add
+    Route::get('/organizerEvents',[EventsController::class, 'index'])->name('organizer.event');
+    Route::post('/organizerEvents/store', [EventsController::class, 'store'])->name('organizer.event.store');
+});
 // Route::middleware(['auth', 'role:Client'])->group(function () {
-//     Route::get('/clientDashboard', [ClientController::class, 'index'])->name('passenger.dashboard');
+//     Route::get('/clientDashboard', [ClientController::class, 'index'])->name('client.dashboard');
 // });
 
 Route::middleware('auth')->group(function () {

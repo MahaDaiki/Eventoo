@@ -8,26 +8,35 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <!--    Favicons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicons/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicons/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicons/favicon-16x16.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicons/favicon.ico')}}">
-    <link rel="manifest" href="assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/mstile-150x150.png')}}">
     <meta name="theme-color" content="#ffffff">
     <!--    Stylesheets-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="{{ asset('vendors/prism/prism.css')}}" rel="stylesheet">
-    <link href="{{ asset('assets/css/theme.css')}}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/user.css')}}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" 
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xSj2hLbg6udzU0VsmI0TwXR7Qg6p6cnJnjZgH4VI5z9ZBwTbWeBpY35pmFUw+1X6thMkfKQK3By+qSNSxV+/pRg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" integrity="sha384-pzjw8Y+JCSQ9/6KdKEePPxiW0spso++eP4FD4HA6JtuIqMy9e5djCgWXLiJAgZtId" crossorigin="anonymous">
 
-    <link href="{{ asset('vendors/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css')}}">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css')}}">
+
+    <!-- Styles -->
+
+    <script src="{{ asset('assets/js/custom.js')}}"></script>
+<link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json')}}">
+    
+ 
         
 
         <!-- Scripts -->
@@ -51,17 +60,14 @@
                 {{ $slot }}
             </main>
         </div>
-        <script src="{{ asset('vendors/popper/popper.min.js')}}"></script>
-        <script src="{{ asset('vendors/bootstrap/bootstrap.min.js')}}"></script>
-        <script src="{{ asset('vendors/anchorjs/anchor.min.js')}}"></script>
-        <script src="{{ asset('vendors/is/is.min.js')}}"></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-        <script src="{{ asset('vendors/fontawesome/all.min.js')}}"></script>
-        <script src="{{ asset('vendors/swiper/swiper-bundle.min.js')}}"></script>
-        <script src="{{ asset('vendors/fontawesome/all.min.js')}}"></script>
-        <script src="{{ asset('vendors/lodash/lodash.min.js')}}"></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-        <script src="{{ asset('assets/js/theme.js')}}"></script>
+        <script type='text/javascript' src='{{ asset('assets/js/jquery.js')}}'></script>
+        <script type='text/javascript' src='{{ asset('assets/js/masonry.pkgd.min.js')}}'></script>
+        <script type='text/javascript' src='{{ asset('assets/js/jquery.collapsible.min.js')}}'></script>
+        <script type='text/javascript' src='{{ asset('assets/js/swiper.min.js')}}'></script>
+        <script type='text/javascript' src='{{ asset('assets/js/jquery.countdown.min.js')}}'></script>
+        <script type='text/javascript' src='{{ asset('assets/js/circle-progress.min.js')}}'></script>
+        <script type='text/javascript' src='{{ asset('assets/js/jquery.countTo.min.js')}}'></script>
+        <script type='text/javascript' src='{{ asset('assets/js/custom.js')}}'></script>>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eQfT0Y9qNQeGdZl5CK5I2ihK6J/RJPypXtkFEl7MOh5deV+bbef5dBo4y5yoSZNf" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

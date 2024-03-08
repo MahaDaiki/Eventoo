@@ -10,24 +10,26 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <!--    Favicons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo e(asset('assets/img/favicons/apple-touch-icon.png')); ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo e(asset('assets/img/favicons/favicon-32x32.png')); ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo e(asset('assets/img/favicons/favicon-16x16.png')); ?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('assets/img/favicons/favicon.ico')); ?>">
-    <link rel="manifest" href="assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="<?php echo e(asset('assets/img/favicons/mstile-150x150.png')); ?>">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="<?php echo e(asset('assets/css/bootstrap.min.css')); ?>">
+
+        <!-- FontAwesome CSS -->
+        <link rel="stylesheet" href="<?php echo e(asset('assets/css/font-awesome.min.css')); ?>">
+    
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper.min.css')); ?>">
+    
+        <!-- Styles -->
+        <link rel="stylesheet" href="<?php echo e(asset('assets/style.css')); ?>">
+        <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
+    <link rel="manifest" href="<?php echo e(asset('assets/img/favicons/manifest.json')); ?>">
     <meta name="theme-color" content="#ffffff">
     <!--    Stylesheets-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="<?php echo e(asset('vendors/prism/prism.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('assets/css/theme.css')); ?>" rel="stylesheet" />
-    <link href="<?php echo e(asset('assets/css/user.css')); ?>" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yV9pL/CSBFmssvE7BoHp1uSKnH4LbIbDkPjFq0Rzy3Qv50l5a1BJsbAcaZlS9fI" crossorigin="anonymous">
-    <link href="<?php echo e(asset('vendors/swiper/swiper-bundle.min.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6gD0NX6PTbhEJ6QF/WokGBR5dFZ1xM2" crossorigin="anonymous">
 
         
@@ -39,481 +41,447 @@
         
             
             <main>
-                <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#10203F;">
-                    <div class="container">
-                        <a class="navbar-brand" href="index.html">EvenTo</a>
-                        
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav ms-auto">
-                                <?php if(Route::has('login')): ?>
-                                    <?php if(auth()->guard()->check()): ?>
-                                        <li class="nav-item d-none d-sm-block"><a class="nav-link" href="<?php echo e(url('/dashboard')); ?>"><i class="fas fa-user text-info me-2"></i></a></li>
-                                    <?php else: ?>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('login')); ?>">Login</a></li>
-                                        <?php if(Route::has('register')): ?>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo e(route('register')); ?>">Register</a></li>
+                
+                <header class="site-header">
+                    <div class="header-bar">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-10 col-lg-2 order-lg-1">
+                                    <div class="site-branding">
+                                        <div class="site-title">
+                                            <a href="<?php echo e('/'); ?>"><img src="assets/images/logo.png" alt="logo"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col-2 col-lg-7 order-3 order-lg-2">
+                                    <nav class="site-navigation">
+                                        <div class="hamburger-menu d-lg-none">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div><!-- .hamburger-menu -->
+                
+                                        <ul>
+                                            <li><a href="<?php echo e('/'); ?>">Home</a></li>
+                                            <?php if(Route::has('login')): ?>
+                                            <?php if(auth()->guard()->check()): ?>
+                                            <li><a href="<?php echo e(url('/dashboard')); ?>">Dashboard</a></li>
+                                            <?php else: ?>
+                                            <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
+                                            <?php if(Route::has('register')): ?>
+                                            <li><a href="<?php echo e(route('register')); ?>">register</a></li>
+                                            <?php endif; ?>
+                                            <?php endif; ?>
                                         <?php endif; ?>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                                        </ul>
+                                    </nav><!-- .site-navigation -->
+                                </div><!-- .col -->
                 
+                                <div class="col-lg-3 d-none d-lg-block order-2 order-lg-3">
+                                    <div class="buy-tickets">
+                                        <a class="btn gradient-bg" href="#">Buy Tickets</a>
+                                    </div><!-- .buy-tickets -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+                        </div><!-- .container-fluid -->
+                    </div><!-- .header-bar -->
                 
-                      
-                          
-                          
-                        
-                    </div>
-                  </div>
-                </section>
+                    <div class="swiper-container hero-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" data-date="2018/05/01" style="background: url('assets/images/header-bg.jpg') no-repeat">
+                                <div class="hero-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col flex flex-column justify-content-center">
+                                                <div class="entry-header">
+                                                    <div class="countdown flex align-items-center">
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dday"></span>
+                                                            <label>Days</label>
+                                                        </div><!-- .countdown-holder -->
                 
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dhour"></span>
+                                                            <label>Hours</label>
+                                                        </div><!-- .countdown-holder -->
                 
-          
-                <!-- ============================================-->
-                <!-- <section> begin ============================-->
-                <section class="py-6">
-          
-                  <div class="container">
-                    <div class="row">
-                      <h1 class="header-title display-4 header text-start mb-5"> TOP COURSES</h1>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/art-masterclass.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/moma.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">The Professional Art Masterclass</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                          </div>
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dmin"></span>
+                                                            <label>Minutes</label>
+                                                        </div><!-- .countdown-holder -->
+                
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dsec"></span>
+                                                            <label>Seconds</label>
+                                                        </div><!-- .countdown-holder -->
+                                                    </div><!-- .countdown -->
+                
+                                                    <h2 class="entry-title">1 We have the best events. <br>Get your tiket now!</h2>
+                                                </div><!--- .entry-header -->
+                
+                                                <div class="entry-footer">
+                                                    <a class="btn gradient-bg" href="#">Order here</a>
+                                                </div><!-- .entry-footer" -->
+                                            </div><!-- .col -->
+                                        </div><!-- .container -->
+                                    </div><!-- .hero-content -->
+                                </div><!-- .swiper-slide -->
+                            </div><!-- .swiper-wrapper -->
+                
+                            <div class="swiper-slide" data-date="2019/05/01" style="background: url('assets/images/header-bg.jpg') no-repeat">
+                                <div class="hero-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col flex flex-column justify-content-center">
+                                                <div class="entry-header">
+                                                    <div class="countdown flex align-items-center">
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dday"></span>
+                                                            <label>Days</label>
+                                                        </div><!-- .countdown-holder -->
+                
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dhour"></span>
+                                                            <label>Hours</label>
+                                                        </div><!-- .countdown-holder -->
+                
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dmin"></span>
+                                                            <label>Minutes</label>
+                                                        </div><!-- .countdown-holder -->
+                
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dsec"></span>
+                                                            <label>Seconds</label>
+                                                        </div><!-- .countdown-holder -->
+                                                    </div><!-- .countdown -->
+                
+                                                    <h2 class="entry-title">2 We have the best events. <br>Get your tiket now!</h2>
+                                                </div><!--- .entry-header -->
+                
+                                                <div class="entry-footer">
+                                                    <a class="btn gradient-bg" href="#">Order here</a>
+                                                </div><!-- .entry-footer" -->
+                                            </div><!-- .col -->
+                                        </div><!-- .container -->
+                                    </div><!-- .hero-content -->
+                                </div><!-- .swiper-slide -->
+                            </div><!-- .swiper-wrapper -->
+                
+                            <div class="swiper-slide" data-date="2020/05/01" style="background: url('assets/images/header-bg.jpg') no-repeat">
+                                <div class="hero-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col flex flex-column justify-content-center">
+                                                <div class="entry-header">
+                                                    <div class="countdown flex align-items-center">
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dday"></span>
+                                                            <label>Days</label>
+                                                        </div><!-- .countdown-holder -->
+                
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dhour"></span>
+                                                            <label>Hours</label>
+                                                        </div><!-- .countdown-holder -->
+                
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dmin"></span>
+                                                            <label>Minutes</label>
+                                                        </div><!-- .countdown-holder -->
+                
+                                                        <div class="countdown-holder flex align-items-baseline">
+                                                            <span class="dsec"></span>
+                                                            <label>Seconds</label>
+                                                        </div><!-- .countdown-holder -->
+                                                    </div><!-- .countdown -->
+                
+                                                    <h2 class="entry-title">3 We have the best events. <br>Get your tiket now!</h2>
+                                                </div><!--- .entry-header -->
+                
+                                                <div class="entry-footer">
+                                                    <a class="btn gradient-bg" href="#">Order here</a>
+                                                </div><!-- .entry-footer" -->
+                                            </div><!-- .col -->
+                                        </div><!-- .container -->
+                                    </div><!-- .hero-content -->
+                                </div><!-- .swiper-slide -->
+                            </div><!-- .swiper-wrapper -->
                         </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/premiere.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/moma.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">Premiere Pro CC for Beginners</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                          </div>
+                
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next flex justify-content-center align-items-center">
+                            <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></span>
                         </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/electricity.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/y.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">Electricity & Magnetism</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
-                          </div>
+                
+                        <div class="swiper-button-prev flex justify-content-center align-items-center">
+                            <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></svg></span>
                         </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/chemistry.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/school.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">School chemistry beta</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
-                          </div>
+                    </div><!-- .swiper-container -->
+                </header><!-- .site-header -->
+                
+                <div class="homepage-info-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-lg-5">
+                                <figure>
+                                    <img src="assets/images/logo-2.png" alt="logo">
+                                </figure>
+                            </div>
+                
+                            <div class="col-12 col-md-8 col-lg-7">
+                                <header class="entry-header">
+                                    <h2 class="entry-title">What is Agenda and why choose our services?</h2>
+                                </header>
+                
+                                <div class="entry-content">
+                                    <p>Vestibulum eget lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus, pellentesque at facilisis et, scelerisque sit amet metus. Duis vel semper turpis, ac tempus libero. Maecenas id ultrices risus. Aenean nec ornare ipsum, lacinia volutpat urna. Maecenas ut aliquam purus, quis sodales dolor.</p>
+                                </div>
+                
+                                <footer class="entry-footer">
+                                    <a href="#" class="btn gradient-bg">Read More</a>
+                                    <a href="#" class="btn dark">Register Now</a>
+                                </footer>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/oriental-art.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/moma.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">Modernism in Oriental Art</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/visual-art.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/cal-arts.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">Compositions in Visual Art</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/physics.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/school-physics.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">High school physics</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3 mb-4">
-                        <div class="card border-0 h-100">
-                          <div class="position-relative"><img class="w-100" src="assets/img/gallery/davinci.png" alt="courses" />
-                            <div class="course-logo"><img src="assets/img/gallery/moma.png" alt="logo" /></div>
-                            <div class="ps-6"><span class="badge bg-primary rounded-0" style="padding: 11.1px 21px">Free</span></div>
-                          </div>
-                          <div class="card-body px-0 py-3">
-                            <h5 class="mb-0 font-sans-serif fw-bold fs-md-0 fs-lg-1">Color Grading with Da Vinci</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  </div>
-                  <!-- end of .container-->
-          
-                </section>
-                <!-- <section> close ============================-->
-                <!-- ============================================-->
-          
-          
-          
-          
-                <!-- ============================================-->
-                <!-- <section> begin ============================-->
-                <section class="bg-secondary">
-          
-                  <div class="container">
-                    <div class="row g-3">
-                      <h1 class="header-title-explore display-4 header text-start mb-5"> EXPLORE EDUPRIX</h1>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/data-science.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/data-science.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Data Science</h4><a class="stretched-link explore-link" href="#!">78 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/business.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/business.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Business &amp; Management</h4><a class="stretched-link explore-link" href="#!">67 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/language.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/language.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Language</h4><a class="stretched-link explore-link" href="#!">85 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/information.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/information.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Information Technology</h4><a class="stretched-link explore-link" href="#!">98 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/film.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/film.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Modernism in Oriental Art</h4><a class="stretched-link explore-link" href="#!">68 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/math.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/math.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Compositions in Visual Art</h4><a class="stretched-link explore-link" href="#!">878 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/health.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/health.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Health &amp; Medical</h4><a class="stretched-link explore-link" href="#!">79 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-3">
-                        <div class="card card-hover h-100">
-                          <div class="card-body d-flex align-items-center px-4 px-lg-2 px-xl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="icon-box"><img class="eduprix-icon" src="assets/img/icons/design.png" alt="explore" /><img class="eduprix-icon-hover" src="assets/img/icons/design.svg" alt="explore" /></div>
-                              <div class="flex-grow-1 ms-3">
-                                <h4 class="fs-lg-1 text-light mb-0">Design &amp; Creative</h4><a class="stretched-link explore-link" href="#!">37 Courses</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end of .container-->
-          
-                </section>
-                <!-- <section> close ============================-->
-                <!-- ============================================-->
-          
-          
-                <section id="testimonial">
-                  <div class="container">
-                    <div class="row justify-content-end">
-                      <div class="col-2 position-xl-relative">
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselStudentReview" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselStudentReview" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
-                      </div>
-                    </div>
-                    <h1 class="header-title display-4 header text-start mb-5"> STUDENT REVIEW</h1>
-                    <div class="row flex-center h-100">
-                      <div class="carousel slide" id="carouselStudentReview" data-bs-ride="carousel">
-                        <div class="carousel-inner ps-4">
-                          <div class="carousel-item active">
-                            <div class="row h-100 align-items-center">
-                              <div class="col-auto p-0">
-                                <div class="card border-0 h-100">
-                                  <div class="card-body h-100 p-0 pe-4">
-                                    <div class="d-flex align-items-start"> <img src="assets/img/gallery/rectangle.png" alt="rectangle" /><img src="assets/img/gallery/student-review.png" alt="testimonials" width="315" /></div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-5 col-lg-6 col-xl-7 mb-4">
-                                <div class="bg-holder z-index--1" style="background-image:url(assets/img/gallery/quotation.png);background-position:top center;background-size:auto;">
-                                </div>
-                                <!--/.bg-holder-->
-          
-                                <h1 class="fw-normal lh-1 mt-4 mt-lg-0">Emillie <br> Jonas</h1>
-                                <h4 class="fw-light">England</h4>
-                                <p class="mt-4 pe-xxl-8">Eduprix is an ideal location for anybody who wants to learn something new or share what they know with others.  Eduprix is a worldwide platform for online learning that helps to connect with one another via knowledge. It comes highly recommended from my side. </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="row h-100 align-items-center">
-                              <div class="col-auto p-0">
-                                <div class="card border-0 h-100">
-                                  <div class="card-body h-100 p-0 pe-4">
-                                    <div class="d-flex align-items-start"> <img src="assets/img/gallery/rectangle.png" alt="rectangle" /><img src="assets/img/gallery/student-review.png" alt="testimonials" width="315" /></div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-5 col-lg-6 col-xl-7 mb-4">
-                                <div class="bg-holder z-index--1" style="background-image:url(assets/img/gallery/quotation.png);background-position:top center;background-size:auto;">
-                                </div>
-                                <!--/.bg-holder-->
-          
-                                <h1 class="fw-normal lh-1 mt-4 mt-lg-0">Ainara <br> Vergara</h1>
-                                <h4 class="fw-light">USA</h4>
-                                <p class="mt-4 pe-xxl-8">Eduprix is an ideal location for anybody who wants to learn something new or share what they know with others.  Eduprix is a worldwide platform for online learning that helps to connect with one another via knowledge. It comes highly recommended from my side. </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="row h-100 align-items-center">
-                              <div class="col-auto p-0">
-                                <div class="card border-0 h-100">
-                                  <div class="card-body h-100 p-0 pe-4">
-                                    <div class="d-flex align-items-start"> <img src="assets/img/gallery/rectangle.png" alt="rectangle" /><img src="assets/img/gallery/student-review.png" alt="testimonials" width="315" /></div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-5 col-lg-6 col-xl-7 mb-4">
-                                <div class="bg-holder z-index--1" style="background-image:url(assets/img/gallery/quotation.png);background-position:top center;background-size:auto;">
-                                </div>
-                                <!--/.bg-holder-->
-          
-                                <h1 class="fw-normal lh-1 mt-4 mt-lg-0">Niek <br> Bove</h1>
-                                <h4 class="fw-light">Bangladesh</h4>
-                                <p class="mt-4 pe-xxl-8">Eduprix is an ideal location for anybody who wants to learn something new or share what they know with others.  Eduprix is a worldwide platform for online learning that helps to connect with one another via knowledge. It comes highly recommended from my side. </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row justify-content-end">
-                          <div class="col-auto">
-                            <div class="carousel-indicators position-relative">
-                              <button class="active" type="button" data-bs-target="#carouselStudentReview" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                              <button type="button" data-bs-target="#carouselStudentReview" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                              <button type="button" data-bs-target="#carouselStudentReview" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-          
-          
-                <!-- ============================================-->
-                <!-- <section> begin ============================-->
-                <section class="bg-soft-primary">
-          
-                  <div class="container">
-                    <div class="row flex-center">
-                      <div class="col-12 col-md-6 col-lg-3 text-center mb-5 mb-lg-0"><img class="mb-5" src="assets/img/illustrations/top-course.png" height="140" alt="rectangle" />
-                        <h1 class="text-secondary">1257</h1>
-                        <h1 class="fw-normal text-secondary">Top <br> Courses</h1>
-                        <p>Take courses from the world’s best <br> instructors and universities. </p>
-                      </div>
-                      <div class="col-12 col-md-6 col-lg-3 text-center mb-5 mb-lg-0"><img class="mb-5" src="assets/img/illustrations/happy-learners.png" height="140" alt="rectangle" />
-                        <h1 class="text-secondary">99981</h1>
-                        <h1 class="fw-normal text-secondary">Happy <br> Learners</h1>
-                        <p>Learners from all around <br> the world.</p>
-                      </div>
-                      <div class="col-12 col-md-6 col-lg-3 text-center mb-5 mb-lg-0"><img class="mb-5" src="assets/img/illustrations/instructors.png" height="140" alt="rectangle" />
-                        <h1 class="text-secondary">578</h1>
-                        <h1 class="fw-normal text-secondary">Eminent <br> Instructors</h1>
-                        <p>Learn your favourite course with <br> world-class instructors. </p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end of .container-->
-          
-                </section>
-                <!-- <section> close ============================-->
-                <!-- ============================================-->
-          
-          
-          
-          
-                <!-- ============================================-->
-                <!-- <section> begin ============================-->
-                <section>
-          
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-12">
-                        <h1 class="header-title display-4 header text-center mb-5"> MEET OUR INSTRUCTORS</h1>
-                        <div class="swiper-custom-container">
-                          <div class="swiper-container theme-slider" data-swiper='{"spaceBetween":1,"slideToClickedSlide":true,"slidesPerView":1,"pagination":{"el":".swiper-pagination","clickable":true,"bulletActiveClass":"bullet-active"},"breakpoints":{"320":{"slidesPerView":1,"spaceBetween":20},"480":{"slidesPerView":2,"spaceBetween":30},"640":{"slidesPerView":4,"spaceBetween":40}}}'>
-                            <div class="swiper-wrapper">
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/john.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">John S. <br> Sergent</h3>
-                                  <p class="mb-0">Head of Data Science</p>
-                                </div>
-                              </div>
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/albrecht.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">Albrecht <br> Kachher</h3>
-                                  <p class="mb-0">Developer and Lead Instructor</p>
-                                </div>
-                              </div>
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/peter.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">Peter P. <br> Rubens</h3>
-                                  <p class="mb-0">Digital Marketing Expart</p>
-                                </div>
-                              </div>
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/david.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">David A. <br> Sequiros</h3>
-                                  <p class="mb-0">Engineering Architect</p>
-                                </div>
-                              </div>
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/john.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">John S. <br> Sergent</h3>
-                                  <p class="mb-0">Head of Data Science</p>
-                                </div>
-                              </div>
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/albrecht.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">Albrecht <br> Kachher</h3>
-                                  <p class="mb-0">Developer and Lead Instructor</p>
-                                </div>
-                              </div>
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/peter.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">Peter P. <br> Rubens</h3>
-                                  <p class="mb-0">Digital Marketing Expart</p>
-                                </div>
-                              </div>
-                              <div class="swiper-slide">
-                                <div class="text-center product"><img class="w-100 photograph" src="assets/img/gallery/david.png" alt="" />
-                                  <h3 class="fw-normal font-base lh-1 text-black mt-3">David A. <br> Sequiros</h3>
-                                  <p class="mb-0">Engineering Architect</p>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="swiper-pagination position-static d-flex justify-contnet-evenly mx-2 my-5"> </div>
-                            <div class="d-flex justify-content-sm-end justify-content-center mt-sm-n7 m-5"><a class="link fw-normal fs-2" href="#!"> See all </a></div>
-                          </div>
-                          <div class="swiper-button-next d-none d-sm-block">
-                            <svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="42" height="27" fill="currentColor" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                            </svg>
-                          </div>
-                          <div class="swiper-button-prev d-none d-sm-block">
-                            <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="42" height="27" fill="currentColor" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end of .container-->
-          
-                </section>
-           
-                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm sm:text-left">
-                        &nbsp;
-                    </div>
-
-                   
                 </div>
-            </div>
-        </div>
-        <script src="<?php echo e(asset('vendors/popper/popper.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('vendors/bootstrap/bootstrap.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('vendors/anchorjs/anchor.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('vendors/is/is.min.js')); ?>"></script>
+                
+                <div class="homepage-featured-events">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="featured-events-wrap flex flex-wrap justify-content-between">
+                                    <div class="event-content-wrap positioning-event-1">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/1.jpg" alt="1"></a>
+                                        </figure>
+                
+                                        <header class="entry-header">
+                                            <h3 class="entry-title">Michael Smith in concert</h3>
+                
+                                            <div class="posted-date">August 25</div>
+                                        </header>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-2">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/2.jpg" alt=""></a>
+                                        </figure>
+                
+                                        <header class="entry-header">
+                                            <h3 class="entry-title">Street art fest</h3>
+                
+                                            <div class="posted-date">November 28</div>
+                                        </header>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-3">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/3.jpg" alt=""></a>
+                                        </figure>
+                
+                                        <header class="entry-header">
+                                            <h3 class="entry-title">Anabelle in concert</h3>
+                
+                                            <div class="posted-date">August 28</div>
+                                        </header>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-4 half">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/events-in-london.jpg" alt=""></a>
+                                        </figure>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-5 half">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/check-july.png" alt=""></a>
+                                        </figure>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-6 half">
+                                        <figure>
+                                            <a href="#"><img src="assets/mages/summer-festivals.jpg" alt=""></a>
+                                        </figure>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-7">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/90.jpg" alt=""></a>
+                                        </figure>
+                
+                                        <header class="entry-header">
+                                            <h3 class="entry-title">90’s Disco Night</h3>
+                
+                                            <div class="posted-date">August 28</div>
+                                        </header>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-8">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/modern.jpg" alt="1"></a>
+                                        </figure>
+                
+                                        <header class="entry-header">
+                                            <h3 class="entry-title">Modern Ballet</h3>
+                
+                                            <div class="posted-date">August 25</div>
+                                        </header>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-9">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/smoke.jpg" alt=""></a>
+                                        </figure>
+                
+                                        <header class="entry-header">
+                                            <h3 class="entry-title">Smoke show</h3>
+                
+                                            <div class="posted-date">August 28</div>
+                                        </header>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-10 half">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/summer-festival.jpg" alt=""></a>
+                                        </figure>
+                                    </div>
+                
+                                    <div class="event-content-wrap positioning-event-11 half">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/autumn.jpg" alt=""></a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="homepage-next-events">
+                    <div class="container">
+                        <div class="row">
+                            <div class="next-events-section-header">
+                                <h2 class="entry-title">Our next events</h2>
+                                <p>Vestibulum eget lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus, pellentesque at facilisis et, scelerisque sit amet metus. Duis vel semper turpis, ac tempus libero. Maecenas id ultrices risus. Aenean nec ornare ipsum, lacinia.</p>
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <div class="next-event-wrap">
+                                    <figure>
+                                        <a href="#"><img src="assets/images/next1.jpg" alt="1"></a>
+                
+                                        <div class="event-rating">8.9</div>
+                                    </figure>
+                
+                                    <header class="entry-header">
+                                        <h3 class="entry-title">U2 Concert in Detroitt</h3>
+                
+                                        <div class="posted-date">Saturday <span>Jan 27, 2018</span></div>
+                                    </header>
+                
+                                    <div class="entry-content">
+                                        <p>Vestibulum eget lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus.</p>
+                                    </div>
+                
+                                    <footer class="entry-footer">
+                                        <a href="#">Buy Tikets</a>
+                                    </footer>
+                                </div>
+                            </div>
+                
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <div class="next-event-wrap">
+                                    <figure>
+                                        <a href="#"><img src="assets/images/next1.jpg" alt="1"></a>
+                
+                                        <div class="event-rating">7.9</div>
+                                    </figure>
+                
+                                    <header class="entry-header">
+                                        <h3 class="entry-title">TED Talk California</h3>
+                
+                                        <div class="posted-date">Saturday <span>Jan 27, 2018</span></div>
+                                    </header>
+                
+                                    <div class="entry-content">
+                                        <p>Eget lacus at mauris sagittis varius. Etiam ut ven enatis dui. Nullam tellus risus, pellentesque.</p>
+                                    </div>
+                
+                                    <footer class="entry-footer">
+                                        <a href="#">Buy Tikets</a>
+                                    </footer>
+                                </div>
+                            </div>
+                
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <div class="next-event-wrap">
+                                    <figure>
+                                        <a href="#"><img src="assets/images/next1.jpg" alt="1"></a>
+                
+                                        <div class="event-rating">9.9</div>
+                                    </figure>
+                
+                                    <header class="entry-header">
+                                        <h3 class="entry-title">Ultra Music Miami</h3>
+                
+                                        <div class="posted-date">Saturday <span>Jan 27, 2018</span></div>
+                                    </header>
+                
+                                    <div class="entry-content">
+                                        <p>Lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus, pellentesque at facili.</p>
+                                    </div>
+                
+                                    <footer class="entry-footer">
+                                        <a href="#">Buy Tikets</a>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <footer class="site-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <figure class="footer-logo">
+                                    <a href="#"><img src="assets/images/logo.png" alt="logo"></a>
+                                </figure>
+                                <div class="footer-social">
+                                    <ul class="flex flex-wrap justify-content-center align-items-center">
+                                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                
+       
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="<?php echo e(asset('vendors/fontawesome/all.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('vendors/swiper/swiper-bundle.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('vendors/fontawesome/all.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('vendors/lodash/lodash.min.js')); ?>"></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/jquery.js')); ?>'></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/masonry.pkgd.min.js')); ?>'></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/jquery.collapsible.min.js')); ?>'></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/swiper.min.js')); ?>'></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/jquery.countdown.min.js')); ?>'></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/circle-progress.min.js')); ?>'></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/jquery.countTo.min.js')); ?>'></script>
+    <script type='text/javascript' src='<?php echo e(asset('assets/js/custom.js')); ?>'></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="<?php echo e(asset('assets/js/theme.js')); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eQfT0Y9qNQeGdZl5CK5I2ihK6J/RJPypXtkFEl7MOh5deV+bbef5dBo4y5yoSZNf" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

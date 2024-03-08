@@ -11,8 +11,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-blue-900 light:text-blue-100 h1 bg-light text-center">
-                    <i class="fas fa-user text-info me-2"></i><?php echo e(Auth::user()->name); ?>
+                <div class="p-6 text-purple-900 light:text-purple-100 h1 bg-light text-center">
+                    <i class="bi bi-person-circle mr-3" style="width: 50px"></i><?php echo e(Auth::user()->name); ?>
 
                 </div>
             </div>
@@ -69,8 +69,10 @@ unset($__errorArgs, $__bag); ?>
                     <tr>
                         <th>Name</th>
                         <th>
-                            <button type="button" class="btn btn-primary btn-sm rounded" data-toggle="modal" data-target="#addCategoryModal">
-                                <i class="fas fa-plus text-dark"></i>
+                            <button type="button" class="btn  btn-sm rounded" data-toggle="modal" data-target="#addCategoryModal">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+</svg>
                     </button>
             </th>
                 </tr>
@@ -82,11 +84,11 @@ unset($__errorArgs, $__bag); ?>
                         <td>
                             <button type="button" class="btn" data-toggle="modal"
                                 data-target="#editCategoryModal<?php echo e($category->id); ?>">
-                                <i class="fas fa-edit"></i>
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                             <button type="button" class="btn " data-toggle="modal"
                                 data-target="#deleteCategoryModal<?php echo e($category->id); ?>">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="bi bi-trash3-fill"></i> 
                             </button>
                         </td>
                     </tr>

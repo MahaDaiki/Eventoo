@@ -17,7 +17,7 @@ class Event extends Model implements HasMedia
         'time',
         'location',
         'duration',
-        'disponible_places',
+        'disponible_tickets',
         'is_valid',
         'is_automatic',
         'organizer_id',
