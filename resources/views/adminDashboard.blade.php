@@ -8,13 +8,31 @@
             </div>
         </div>
     </div>
-
-    <section class="container">
-        @if(session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
-        @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong> Validation Error!</strong>
+        <ul>
+            @foreach ($errors->all() as $error )
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if(session()->has('success'))
+    <div class="alert alert-success mt-4">
+        {{ session()->get('success') }}
+    </div>
+@endif
+@if(session()->has('error'))
+    <div class="alert alert-danger mt-4">
+        {{ session()->get('error') }}
+    </div>
+@endif
+<div class="container  mt-3">
+    <div class="btn-group">
+        <button type="button" class="btn text-light ml-5 mb-2 " style=" border: solid; border-color: rebeccapurple;" onclick="showClientsTable()">Show Clients</button>
+        <button type="button" class="btn text-light  mb-2 active-button"  style=" border: solid; border-color: rebeccapurple; "  onclick="showCategoriesTable()">Show Categories</button>
+    </div>
 
      
         <!-- Add Category Modal -->
@@ -45,7 +63,7 @@
             </div>
         </div>
 
-        <div class="container text-center">
+        <div  id="categoriesSection" class="container text-center ">
             <table class="card bg-light mx-auto table table-sm w-75 rounded">
                 <thead>
                     <tr>
@@ -80,11 +98,12 @@
                     </tr>
                 @endforelse
             </tbody>
-        </table>
+        </table> 
+          <div class="text-center text-light mx-auto" >
+   <h1> {{ $categories->links() }} </h1>
+</div>
         </div>
-        
-
-
+     
         <!-- Edit Category Modal -->
         @foreach($categories as $category)
             <div class="modal fade" id="editCategoryModal{{ $category->id }}" tabindex="-1" role="dialog"
@@ -116,6 +135,7 @@
                 </div>
             </div>
         @endforeach
+    
 
         <!-- Delete Category Modal -->
         @foreach($categories as $category)
@@ -143,4 +163,107 @@
             </div>
         @endforeach
     </section>
+
+    <div id="clientsSection" class="container text-center mt-5 hidden">
+        <table class="card bg-light mx-auto table table-sm w-75 rounded">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Restrict</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($clients as $client)
+                <tr>
+                    <td>{{ $client->id }}</td>
+                   <td>{{ $client->user->name }}</td>
+                   <td>{{ $client->user->email }}</td>
+                   <td><form action="{{ route('clients.destroy', $client->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn bg-danger"><i class="bi bi-person-x" style="font-size: 20px"></i></button>
+                </form></td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="2">No Clients</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table> 
+      <div class="text-center text-light mx-auto" >
+<h1> {{ $clients->links() }} </h1>
+</div>
+    </div>
+</div>
+    <div class="upcoming-events-outer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="upcoming-events">
+                        <div class="upcoming-events-header">
+                            <h4>Events</h4>
+                        </div>
+                        @forelse ($events as $event)
+                            
+                    
+                        <div class="upcoming-events-list">
+                            <div class="upcoming-event-wrap flex flex-wrap justify-content-between align-items-center">
+                                <figure class="events-thumbnail">
+                                    <a href="#"><img src="images/upcoming-1.jpg" alt=""></a>
+                                </figure>
+    
+                                <div class="entry-meta">
+                                    <div class="event-date">
+                                        {{ $event->duration }}
+                                    </div>
+                                </div>
+    
+                                <header class="entry-header">
+                                    <h3 class="entry-title"><a href="#">  {{ $event->title }}</a></h3>
+    
+                                    <div class="event-date-time">  {{ $event->time }}</div>
+    
+                                    <div class="event-speaker">{{ $event->location }}</div>
+                                    <div class="event-speaker">{{ $event->organizer->user->name }}</div>
+                                </header>
+    
+                                <footer class="entry-footer">
+                                    <form action="{{ route('admin.event.update', ['id' => $event->id]) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn "><i class="bi bi-check-all " style="font-size: 50px"></i></button>
+                                    </form>
+                                </footer>
+                            </div>
+    
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @empty
+                            
+    @endforelse
+    <script>
+        function showClientsTable() {
+            document.getElementById('clientsSection').style.display = 'block';
+            document.getElementById('categoriesSection').style.display = 'none';
+
+            document.querySelector('.active-button').classList.remove('active-button');
+            document.querySelector('.btn[text="Show Clients"]').classList.add('active-button');
+        }
+
+        function showCategoriesTable() {
+            document.getElementById('clientsSection').style.display = 'none';
+            document.getElementById('categoriesSection').style.display = 'block';
+
+            document.querySelector('.active-button').classList.remove('active-button');
+            document.querySelector('.btn[text="Show Categories"]').classList.add('active-button');
+        }
+    </script>
 </x-app-layout>

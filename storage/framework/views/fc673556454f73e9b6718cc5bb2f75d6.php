@@ -14,6 +14,7 @@
         <!--    Favicons-->
     <meta name="theme-color" content="#ffffff">
     <!--    Stylesheets-->
+    <link rel="stylesheet" href="<?php echo e(asset('assets/styleadmindash.css')); ?>">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +56,7 @@
 
             </main>
         </div>
+        
         <script type='text/javascript' src='<?php echo e(asset('assets/js/jquery.js')); ?>'></script>
         <script type='text/javascript' src='<?php echo e(asset('assets/js/masonry.pkgd.min.js')); ?>'></script>
         <script type='text/javascript' src='<?php echo e(asset('assets/js/jquery.collapsible.min.js')); ?>'></script>

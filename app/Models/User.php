@@ -46,13 +46,13 @@ class User extends Authenticatable
     ];
     public function Organizer()
     {
-        return $this->hasMany(Organizers::class, 'user_id');
+        return $this->hasOne(Organizers::class);
     }
 
     public function Client()
     {
         
-        return $this->hasMany(Clients::class,'user_id');
+        return $this->hasOne(Clients::class,'user_id');
     }
 
     public function admin()

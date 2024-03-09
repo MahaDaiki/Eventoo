@@ -18,14 +18,33 @@
             </div>
         </div>
     </div>
+    <?php if($errors->any()): ?>
+    <div class="alert alert-danger">
+        <strong> Validation Error!</strong>
+        <ul>
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </ul>
+    </div>
+<?php endif; ?>
+<?php if(session()->has('success')): ?>
+    <div class="alert alert-success mt-4">
+        <?php echo e(session()->get('success')); ?>
 
-    <section class="container">
-        <?php if(session('success')): ?>
-            <div class="alert alert-success" role="alert">
-                <?php echo e(session('success')); ?>
+    </div>
+<?php endif; ?>
+<?php if(session()->has('error')): ?>
+    <div class="alert alert-danger mt-4">
+        <?php echo e(session()->get('error')); ?>
 
-            </div>
-        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<div class="container  mt-3">
+    <div class="btn-group">
+        <button type="button" class="btn text-light ml-5 mb-2 " style=" border: solid; border-color: rebeccapurple;" onclick="showClientsTable()">Show Clients</button>
+        <button type="button" class="btn text-light  mb-2 active-button"  style=" border: solid; border-color: rebeccapurple; "  onclick="showCategoriesTable()">Show Categories</button>
+    </div>
 
      
         <!-- Add Category Modal -->
@@ -63,7 +82,7 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </div>
 
-        <div class="container text-center">
+        <div  id="categoriesSection" class="container text-center ">
             <table class="card bg-light mx-auto table table-sm w-75 rounded">
                 <thead>
                     <tr>
@@ -98,11 +117,12 @@ unset($__errorArgs, $__bag); ?>
                     </tr>
                 <?php endif; ?>
             </tbody>
-        </table>
+        </table> 
+          <div class="text-center text-light mx-auto" >
+   <h1> <?php echo e($categories->links()); ?> </h1>
+</div>
         </div>
-        
-
-
+     
         <!-- Edit Category Modal -->
         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="modal fade" id="editCategoryModal<?php echo e($category->id); ?>" tabindex="-1" role="dialog"
@@ -141,6 +161,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    
 
         <!-- Delete Category Modal -->
         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -168,6 +189,110 @@ unset($__errorArgs, $__bag); ?>
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </section>
+
+    <div id="clientsSection" class="container text-center mt-5 hidden">
+        <table class="card bg-light mx-auto table table-sm w-75 rounded">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Restrict</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $__empty_1 = true; $__currentLoopData = $clients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                <tr>
+                    <td><?php echo e($client->id); ?></td>
+                   <td><?php echo e($client->user->name); ?></td>
+                   <td><?php echo e($client->user->email); ?></td>
+                   <td><form action="<?php echo e(route('clients.destroy', $client->id)); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('DELETE'); ?>
+                    <button type="submit" class="btn bg-danger"><i class="bi bi-person-x" style="font-size: 20px"></i></button>
+                </form></td>
+                </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <tr>
+                    <td colspan="2">No Clients</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table> 
+      <div class="text-center text-light mx-auto" >
+<h1> <?php echo e($clients->links()); ?> </h1>
+</div>
+    </div>
+</div>
+    <div class="upcoming-events-outer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="upcoming-events">
+                        <div class="upcoming-events-header">
+                            <h4>Events</h4>
+                        </div>
+                        <?php $__empty_1 = true; $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            
+                    
+                        <div class="upcoming-events-list">
+                            <div class="upcoming-event-wrap flex flex-wrap justify-content-between align-items-center">
+                                <figure class="events-thumbnail">
+                                    <a href="#"><img src="images/upcoming-1.jpg" alt=""></a>
+                                </figure>
+    
+                                <div class="entry-meta">
+                                    <div class="event-date">
+                                        <?php echo e($event->duration); ?>
+
+                                    </div>
+                                </div>
+    
+                                <header class="entry-header">
+                                    <h3 class="entry-title"><a href="#">  <?php echo e($event->title); ?></a></h3>
+    
+                                    <div class="event-date-time">  <?php echo e($event->time); ?></div>
+    
+                                    <div class="event-speaker"><?php echo e($event->location); ?></div>
+                                    <div class="event-speaker"><?php echo e($event->organizer->user->name); ?></div>
+                                </header>
+    
+                                <footer class="entry-footer">
+                                    <form action="<?php echo e(route('admin.event.update', ['id' => $event->id])); ?>" method="POST" style="display: inline;">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('PUT'); ?>
+                                        <button type="submit" class="btn "><i class="bi bi-check-all " style="font-size: 50px"></i></button>
+                                    </form>
+                                </footer>
+                            </div>
+    
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            
+    <?php endif; ?>
+    <script>
+        function showClientsTable() {
+            document.getElementById('clientsSection').style.display = 'block';
+            document.getElementById('categoriesSection').style.display = 'none';
+
+            document.querySelector('.active-button').classList.remove('active-button');
+            document.querySelector('.btn[text="Show Clients"]').classList.add('active-button');
+        }
+
+        function showCategoriesTable() {
+            document.getElementById('clientsSection').style.display = 'none';
+            document.getElementById('categoriesSection').style.display = 'block';
+
+            document.querySelector('.active-button').classList.remove('active-button');
+            document.querySelector('.btn[text="Show Categories"]').classList.add('active-button');
+        }
+    </script>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>

@@ -31,15 +31,24 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'showDashboard'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+//Admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/adminDashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::resource('categories', CategoriesController::class);
+    Route::put('/admin/events/{id}', [AdminController::class, 'update'])->name('admin.event.update');
+    Route::delete('/admin/{client}', [AdminController::class, 'destroy'])->name('clients.destroy');
 });
+
+//Organizer
 Route::middleware(['auth', 'role:Organizer'])->group(function () {
     Route::get('/organizerDashboard', [OrganizerController::class, 'index'])->name('organizer.dashboard');
-    //Event Add
+    //Event managing  routes
     Route::get('/organizerEvents',[EventsController::class, 'index'])->name('organizer.event');
     Route::post('/organizerEvents/store', [EventsController::class, 'store'])->name('organizer.event.store');
+    Route::get('/organizerEvents/{id}/edit', [EventsController::class, 'edit'])->name('organizer.event.edit');
+    Route::put('/organizerEvents/{id}', [EventsController::class, 'update'])->name('organizer.event.update');
+    Route::delete('/organizerEvents/{id}', [EventsController::class, 'destroy'])->name('organizer.event.destroy');
 });
 // Route::middleware(['auth', 'role:Client'])->group(function () {
 //     Route::get('/clientDashboard', [ClientController::class, 'index'])->name('client.dashboard');

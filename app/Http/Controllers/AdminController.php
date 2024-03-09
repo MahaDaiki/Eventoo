@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Clients;
+use App\Models\Event;
 use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
@@ -12,10 +15,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $categories = Categories::all();
-        return view('adminDashboard', compact('categories'));
+        $events = Event::where('is_valid', 0)
+        ->whereNull('deleted_at')
+        ->get();
+// dd($events);
+        $clients = Clients::paginate(5);
+        $categories = Categories::paginate(5);
+        return view('adminDashboard', compact('categories','events','clients'));
     }
 
+
+ 
     /**
      * Show the form for creating a new resource.
      */
@@ -51,16 +61,22 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $event = Event::findOrFail($id);
+  
+        $event->update(['is_valid' => 1]);
+    
+        return redirect()->back()->with('success', 'Event marked as valid');
     }
-
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Clients $client)
     {
-        //
+        $client->user()->delete();
+        $client->delete();
+
+        return redirect()->back()->with('success', 'Client access restricted');
     }
 }
