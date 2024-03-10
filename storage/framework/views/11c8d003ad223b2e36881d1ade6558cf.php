@@ -38,10 +38,9 @@
         
     </head>
     <body class="antialiased">
-        
-            
+      
             <main>
-                
+              
                 <header class="site-header">
                     <div class="header-bar">
                         <div class="container-fluid">
@@ -81,149 +80,75 @@
                 
                                 <div class="col-lg-3 d-none d-lg-block order-2 order-lg-3">
                                     <div class="buy-tickets">
-                                        <a class="btn gradient-bg" href="#">Buy Tickets</a>
+                                        <a class="btn gradient-bg" href="<?php echo e(route('events')); ?>">Events</a>
                                     </div><!-- .buy-tickets -->
                                 </div><!-- .col -->
                             </div><!-- .row -->
                         </div><!-- .container-fluid -->
                     </div><!-- .header-bar -->
                 
-                    <div class="swiper-container hero-slider">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" data-date="2018/05/01" style="background: url('assets/images/header-bg.jpg') no-repeat">
-                                <div class="hero-content">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col flex flex-column justify-content-center">
-                                                <div class="entry-header">
-                                                    <div class="countdown flex align-items-center">
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dday"></span>
-                                                            <label>Days</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dhour"></span>
-                                                            <label>Hours</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dmin"></span>
-                                                            <label>Minutes</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dsec"></span>
-                                                            <label>Seconds</label>
-                                                        </div><!-- .countdown-holder -->
-                                                    </div><!-- .countdown -->
-                
-                                                    <h2 class="entry-title">1 We have the best events. <br>Get your tiket now!</h2>
-                                                </div><!--- .entry-header -->
-                
-                                                <div class="entry-footer">
-                                                    <a class="btn gradient-bg" href="#">Order here</a>
-                                                </div><!-- .entry-footer" -->
-                                            </div><!-- .col -->
-                                        </div><!-- .container -->
-                                    </div><!-- .hero-content -->
-                                </div><!-- .swiper-slide -->
+                    <header class="site-header">
+                        <div class="swiper-container hero-slider">
+                            <div class="swiper-wrapper">
+                                <?php $__empty_1 = true; $__currentLoopData = $upcomingEvents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $up): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    <div class="swiper-slide" data-date="<?php echo e($up->time); ?>" style="background: url('assets/images/header-bg.jpg') no-repeat">
+                                        <div class="hero-content">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col flex flex-column justify-content-center">
+                                                        <div class="entry-header">
+                                                            <div class="countdown flex align-items-center">
+                                                                <div class="countdown-holder flex align-items-baseline">
+                                                                    <span class="dday"></span>
+                                                                    <label>Days</label>
+                                                                </div><!-- .countdown-holder -->
+                        
+                                                                <div class="countdown-holder flex align-items-baseline">
+                                                                    <span class="dhour"></span>
+                                                                    <label>Hours</label>
+                                                                </div><!-- .countdown-holder -->
+                        
+                                                                <div class="countdown-holder flex align-items-baseline">
+                                                                    <span class="dmin"></span>
+                                                                    <label>Minutes</label>
+                                                                </div><!-- .countdown-holder -->
+                        
+                                                                <div class="countdown-holder flex align-items-baseline">
+                                                                    <span class="dsec"></span>
+                                                                    <label>Seconds</label>
+                                                                </div><!-- .countdown-holder -->
+                                                            </div><!-- .countdown -->
+                    
+                                                            <h2 class="entry-title"><?php echo e($up->title); ?></h2>
+                                                        </div><!--- .entry-header -->
+                    
+                                                        <div class="entry-footer">
+                                                            <a class="btn gradient-bg" href="#">Order here</a>
+                                                        </div><!-- .entry-footer -->
+                                                    </div><!-- .col -->
+                                                </div><!-- .row -->
+                                            </div><!-- .container -->
+                                        </div><!-- .hero-content -->
+                                    </div><!-- .swiper-slide -->
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <h1>Nothing to see</h1>
+                                <?php endif; ?>
                             </div><!-- .swiper-wrapper -->
-                
-                            <div class="swiper-slide" data-date="2019/05/01" style="background: url('assets/images/header-bg.jpg') no-repeat">
-                                <div class="hero-content">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col flex flex-column justify-content-center">
-                                                <div class="entry-header">
-                                                    <div class="countdown flex align-items-center">
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dday"></span>
-                                                            <label>Days</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dhour"></span>
-                                                            <label>Hours</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dmin"></span>
-                                                            <label>Minutes</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dsec"></span>
-                                                            <label>Seconds</label>
-                                                        </div><!-- .countdown-holder -->
-                                                    </div><!-- .countdown -->
-                
-                                                    <h2 class="entry-title">2 We have the best events. <br>Get your tiket now!</h2>
-                                                </div><!--- .entry-header -->
-                
-                                                <div class="entry-footer">
-                                                    <a class="btn gradient-bg" href="#">Order here</a>
-                                                </div><!-- .entry-footer" -->
-                                            </div><!-- .col -->
-                                        </div><!-- .container -->
-                                    </div><!-- .hero-content -->
-                                </div><!-- .swiper-slide -->
-                            </div><!-- .swiper-wrapper -->
-                
-                            <div class="swiper-slide" data-date="2020/05/01" style="background: url('assets/images/header-bg.jpg') no-repeat">
-                                <div class="hero-content">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col flex flex-column justify-content-center">
-                                                <div class="entry-header">
-                                                    <div class="countdown flex align-items-center">
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dday"></span>
-                                                            <label>Days</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dhour"></span>
-                                                            <label>Hours</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dmin"></span>
-                                                            <label>Minutes</label>
-                                                        </div><!-- .countdown-holder -->
-                
-                                                        <div class="countdown-holder flex align-items-baseline">
-                                                            <span class="dsec"></span>
-                                                            <label>Seconds</label>
-                                                        </div><!-- .countdown-holder -->
-                                                    </div><!-- .countdown -->
-                
-                                                    <h2 class="entry-title">3 We have the best events. <br>Get your tiket now!</h2>
-                                                </div><!--- .entry-header -->
-                
-                                                <div class="entry-footer">
-                                                    <a class="btn gradient-bg" href="#">Order here</a>
-                                                </div><!-- .entry-footer" -->
-                                            </div><!-- .col -->
-                                        </div><!-- .container -->
-                                    </div><!-- .hero-content -->
-                                </div><!-- .swiper-slide -->
-                            </div><!-- .swiper-wrapper -->
-                        </div>
-                
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                
-                        <!-- Add Arrows -->
-                        <div class="swiper-button-next flex justify-content-center align-items-center">
-                            <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></span>
-                        </div>
-                
-                        <div class="swiper-button-prev flex justify-content-center align-items-center">
-                            <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></svg></span>
-                        </div>
-                    </div><!-- .swiper-container -->
-                </header><!-- .site-header -->
+                    
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                    
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next flex justify-content-center align-items-center">
+                                <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">...</svg></span>
+                            </div>
+                    
+                            <div class="swiper-button-prev flex justify-content-center align-items-center">
+                                <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">...</svg></span>
+                            </div>
+                        </div><!-- .swiper-container -->
+                    </header><!-- .site-header -->
+                    
                 
                 <div class="homepage-info-section">
                     <div class="container">
@@ -256,199 +181,66 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <div class="featured-events-wrap flex flex-wrap justify-content-between">
-                                    <div class="event-content-wrap positioning-event-1">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/1.jpg" alt="1"></a>
-                                        </figure>
-                
-                                        <header class="entry-header">
-                                            <h3 class="entry-title">Michael Smith in concert</h3>
-                
-                                            <div class="posted-date">August 25</div>
-                                        </header>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-2">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/2.jpg" alt=""></a>
-                                        </figure>
-                
-                                        <header class="entry-header">
-                                            <h3 class="entry-title">Street art fest</h3>
-                
-                                            <div class="posted-date">November 28</div>
-                                        </header>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-3">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/3.jpg" alt=""></a>
-                                        </figure>
-                
-                                        <header class="entry-header">
-                                            <h3 class="entry-title">Anabelle in concert</h3>
-                
-                                            <div class="posted-date">August 28</div>
-                                        </header>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-4 half">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/events-in-london.jpg" alt=""></a>
-                                        </figure>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-5 half">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/check-july.png" alt=""></a>
-                                        </figure>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-6 half">
-                                        <figure>
-                                            <a href="#"><img src="assets/mages/summer-festivals.jpg" alt=""></a>
-                                        </figure>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-7">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/90.jpg" alt=""></a>
-                                        </figure>
-                
-                                        <header class="entry-header">
-                                            <h3 class="entry-title">90’s Disco Night</h3>
-                
-                                            <div class="posted-date">August 28</div>
-                                        </header>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-8">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/modern.jpg" alt="1"></a>
-                                        </figure>
-                
-                                        <header class="entry-header">
-                                            <h3 class="entry-title">Modern Ballet</h3>
-                
-                                            <div class="posted-date">August 25</div>
-                                        </header>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-9">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/smoke.jpg" alt=""></a>
-                                        </figure>
-                
-                                        <header class="entry-header">
-                                            <h3 class="entry-title">Smoke show</h3>
-                
-                                            <div class="posted-date">August 28</div>
-                                        </header>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-10 half">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/summer-festival.jpg" alt=""></a>
-                                        </figure>
-                                    </div>
-                
-                                    <div class="event-content-wrap positioning-event-11 half">
-                                        <figure>
-                                            <a href="#"><img src="assets/images/autumn.jpg" alt=""></a>
-                                        </figure>
-                                    </div>
+                                <div class="row">
+                                    <?php $__empty_1 = true; $__currentLoopData = $allEvents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                        <div class="ml-5 event-content-wrap positioning-event-1 mb-4 col-md-4">
+                                        
+                                            <figure>
+                                                <a href="#"><img src="assets/images/1.jpg" alt="1"></a>
+                                            </figure>
+                                            <header class="entry-header">
+                                                <h3 class="entry-title"><?php echo e($event->title); ?></h3>
+                                                <div class="posted-date"><?php echo e($event->time); ?></div>
+                                            </header>
+                                        </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                        <h1>No events</h1>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                
+                
                 
                 <div class="homepage-next-events">
                     <div class="container">
                         <div class="row">
-                            <div class="next-events-section-header">
-                                <h2 class="entry-title">Our next events</h2>
-                                <p>Vestibulum eget lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus, pellentesque at facilisis et, scelerisque sit amet metus. Duis vel semper turpis, ac tempus libero. Maecenas id ultrices risus. Aenean nec ornare ipsum, lacinia.</p>
+                            <div class="col-12">
+                                <div class="next-events-section-header">
+                                    <h2 class="entry-title">Our next events</h2>
+                                    <p>Vestibulum eget lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus, pellentesque at facilisis et, scelerisque sit amet metus. Duis vel semper turpis, ac tempus libero. Maecenas id ultrices risus. Aenean nec ornare ipsum, lacinia.</p>
+                                </div>
                             </div>
                         </div>
                 
                         <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="next-event-wrap">
-                                    <figure>
-                                        <a href="#"><img src="assets/images/next1.jpg" alt="1"></a>
-                
-                                        <div class="event-rating">8.9</div>
-                                    </figure>
-                
-                                    <header class="entry-header">
-                                        <h3 class="entry-title">U2 Concert in Detroitt</h3>
-                
-                                        <div class="posted-date">Saturday <span>Jan 27, 2018</span></div>
-                                    </header>
-                
-                                    <div class="entry-content">
-                                        <p>Vestibulum eget lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus.</p>
+                            <?php $__empty_1 = true; $__currentLoopData = $upcomingEvents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $upcoming): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                    <div class="next-event-wrap">
+                                        <figure>
+                                            <a href="#"><img src="assets/images/next1.jpg" alt="1"></a>
+                                            <div class="event-rating"><?php echo e($upcoming->duration); ?></div>
+                                        </figure>
+                                        <header class="entry-header">
+                                            <h3 class="entry-title"><?php echo e($upcoming->title); ?></h3>
+                                            <div class="posted-date"><?php echo e($upcoming->time); ?></div>
+                                        </header>
+                                        <footer class="entry-footer">
+                                            <a href="#">Buy Tickets</a>
+                                        </footer>
                                     </div>
-                
-                                    <footer class="entry-footer">
-                                        <a href="#">Buy Tikets</a>
-                                    </footer>
                                 </div>
-                            </div>
-                
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="next-event-wrap">
-                                    <figure>
-                                        <a href="#"><img src="assets/images/next1.jpg" alt="1"></a>
-                
-                                        <div class="event-rating">7.9</div>
-                                    </figure>
-                
-                                    <header class="entry-header">
-                                        <h3 class="entry-title">TED Talk California</h3>
-                
-                                        <div class="posted-date">Saturday <span>Jan 27, 2018</span></div>
-                                    </header>
-                
-                                    <div class="entry-content">
-                                        <p>Eget lacus at mauris sagittis varius. Etiam ut ven enatis dui. Nullam tellus risus, pellentesque.</p>
-                                    </div>
-                
-                                    <footer class="entry-footer">
-                                        <a href="#">Buy Tikets</a>
-                                    </footer>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <div class="col-12">
+                                    <h1>No Coming Events</h1>
                                 </div>
-                            </div>
-                
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="next-event-wrap">
-                                    <figure>
-                                        <a href="#"><img src="assets/images/next1.jpg" alt="1"></a>
-                
-                                        <div class="event-rating">9.9</div>
-                                    </figure>
-                
-                                    <header class="entry-header">
-                                        <h3 class="entry-title">Ultra Music Miami</h3>
-                
-                                        <div class="posted-date">Saturday <span>Jan 27, 2018</span></div>
-                                    </header>
-                
-                                    <div class="entry-content">
-                                        <p>Lacus at mauris sagittis varius. Etiam ut venenatis dui. Nullam tellus risus, pellentesque at facili.</p>
-                                    </div>
-                
-                                    <footer class="entry-footer">
-                                        <a href="#">Buy Tikets</a>
-                                    </footer>
-                                </div>
-                            </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
-                
                 
                 <footer class="site-footer">
                     <div class="container">

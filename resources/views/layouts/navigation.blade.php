@@ -25,6 +25,13 @@
                     </x-responsive-nav-link>
                 @endif
                </div>
+               <div class="mt-2 hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                @if (auth()->user()->hasRole('admin'))
+                <x-responsive-nav-link :href="route('admin.stats')" :active="request()->routeIs('admin.stats')">
+                    {{ __('Statistiques') }}
+                </x-responsive-nav-link>
+            @endif
+           </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -82,6 +89,11 @@
             @if (auth()->user()->hasRole('Organizer'))
             <x-responsive-nav-link :href="route('organizer.event')" :active="request()->routeIs('organizer.event')">
                 {{ __('Events') }}
+            </x-responsive-nav-link>
+        @endif
+            @if (auth()->user()->hasRole('admin'))
+            <x-responsive-nav-link :href="route('admin.stats')" :active="request()->routeIs('admin.stats')">
+                {{ __('Statistiques') }}
             </x-responsive-nav-link>
         @endif
         </div>

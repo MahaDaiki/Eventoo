@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Clients;
 use App\Models\Event;
 use App\Models\Organizers;
@@ -16,10 +17,10 @@ class StatistiqueController extends Controller
         $organizerCount = Organizers::count();
         $eventCount = Event::count();
 
-        $eventReservations = Event::withCount('reservations')->get();
+        $reservationCount = Event::withCount('reservations')->get();
 
-        $eventCategories = Event::with('categories')->get();
-
-        return view('statistics.index', compact('clientCount', 'organizerCount', 'eventCount', 'eventReservations', 'eventCategories'));
+        $categoriesInEvents = Event::with('category')->get();
+        $categories = Categories::all();
+        return view('adminstats', compact('clientCount', 'organizerCount', 'eventCount', 'reservationCount', 'categoriesInEvents','categories'));
     }
 }

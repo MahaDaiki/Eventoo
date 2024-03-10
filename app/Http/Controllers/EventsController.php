@@ -66,13 +66,30 @@ $events = $user->organizer->events;
     return redirect()->back()->with('success', 'Event created successfully');
 }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+public function display()
+{
+    $allEvents = Event::where('is_valid', 1)->orderBy('time', 'asc')->get();
+    $upcomingEvents = Event::where('is_valid', 1)->orderBy('time', 'asc')->take(3)->get();
+
+    return view('welcome', compact('allEvents', 'upcomingEvents'));
+}
+public function displayall(){
+    $all = Event::where('is_valid', 1)->paginate(10);
+    $categories= categories::all();
+
+    return view ('allevents',compact('all','categories'));
+}
+
+public function showDetails($id)
+{
+    $event = Event::find($id);
+    if (!$event) {
+        abort(404); 
     }
+
+   else
+    return view('eventdetails', compact('event'));
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -131,4 +148,30 @@ $events = $user->organizer->events;
     
         return redirect()->back()->with('success', 'Event deleted successfully');
 }
+
+public function search(Request $request)
+{
+    $date = $request->input('date');
+    $title = $request->input('title');
+    $category_id = $request->input('category_id');
+
+    $query = Event::query();
+
+    if ($date) {
+        $query->where('event_date', '=', $date);
+    }
+
+    if ($title) {
+        $query->where('title', 'like', '%' . $title . '%');
+    }
+
+    if ($category_id) {
+        $query->where('category_id', '=', $category_id);
+    }
+    $filteredEvents = $query->get(); 
+    $categories= categories::all();
+ 
+    return view('allevents', compact('filteredEvents','categories'));
+}
+
 }

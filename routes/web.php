@@ -6,7 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StatistiqueController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -27,6 +29,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/',[EventsController::class,'display']);
+Route::get('/Event',[EventsController::class,'displayall'])->name('events');
+Route::get('/Event/{id}', [EventsController::class, 'showDetails'])->name('event.details');
+Route::post('/Event/Search', [EventsController::class, 'search'])->name('search.events');
+
 
 Route::get('/dashboard', [DashboardController::class, 'showDashboard'])
     ->middleware(['auth', 'verified'])
@@ -38,6 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoriesController::class);
     Route::put('/admin/events/{id}', [AdminController::class, 'update'])->name('admin.event.update');
     Route::delete('/admin/{client}', [AdminController::class, 'destroy'])->name('clients.destroy');
+    Route::get('/statistics', [StatistiqueController::class, 'AdminStats'])->name('admin.stats');
 });
 
 //Organizer

@@ -63,6 +63,32 @@
 <?php endif; ?>
                 <?php endif; ?>
                </div>
+               <div class="mt-2 hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <?php if(auth()->user()->hasRole('admin')): ?>
+                <?php if (isset($component)) { $__componentOriginald69b52d99510f1e7cd3d80070b28ca18 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginald69b52d99510f1e7cd3d80070b28ca18 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.responsive-nav-link','data' => ['href' => route('admin.stats'),'active' => request()->routeIs('admin.stats')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('responsive-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.stats')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('admin.stats'))]); ?>
+                    <?php echo e(__('Statistiques')); ?>
+
+                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginald69b52d99510f1e7cd3d80070b28ca18)): ?>
+<?php $attributes = $__attributesOriginald69b52d99510f1e7cd3d80070b28ca18; ?>
+<?php unset($__attributesOriginald69b52d99510f1e7cd3d80070b28ca18); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginald69b52d99510f1e7cd3d80070b28ca18)): ?>
+<?php $component = $__componentOriginald69b52d99510f1e7cd3d80070b28ca18; ?>
+<?php unset($__componentOriginald69b52d99510f1e7cd3d80070b28ca18); ?>
+<?php endif; ?>
+            <?php endif; ?>
+           </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -204,6 +230,30 @@
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('organizer.event')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('organizer.event'))]); ?>
                 <?php echo e(__('Events')); ?>
+
+             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginald69b52d99510f1e7cd3d80070b28ca18)): ?>
+<?php $attributes = $__attributesOriginald69b52d99510f1e7cd3d80070b28ca18; ?>
+<?php unset($__attributesOriginald69b52d99510f1e7cd3d80070b28ca18); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginald69b52d99510f1e7cd3d80070b28ca18)): ?>
+<?php $component = $__componentOriginald69b52d99510f1e7cd3d80070b28ca18; ?>
+<?php unset($__componentOriginald69b52d99510f1e7cd3d80070b28ca18); ?>
+<?php endif; ?>
+        <?php endif; ?>
+            <?php if(auth()->user()->hasRole('admin')): ?>
+            <?php if (isset($component)) { $__componentOriginald69b52d99510f1e7cd3d80070b28ca18 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginald69b52d99510f1e7cd3d80070b28ca18 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.responsive-nav-link','data' => ['href' => route('admin.stats'),'active' => request()->routeIs('admin.stats')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('responsive-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.stats')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('admin.stats'))]); ?>
+                <?php echo e(__('Statistiques')); ?>
 
              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
